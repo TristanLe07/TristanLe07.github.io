@@ -1,5 +1,5 @@
 body {
-    background-image: url('images/background.png');
+    background-image: url('assets/background.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -41,7 +41,7 @@ body {
     border-radius: 25px;
     font-size: 18px;
   }
-  
+
   a {
     text-decoration: none;
     color: rgb(255, 255, 255);
