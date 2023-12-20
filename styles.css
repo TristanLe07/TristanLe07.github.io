@@ -46,14 +46,22 @@ body {
     text-decoration: none;
     color: rgb(255, 255, 255);
     transition: color 1s;
-  }
+    }
   
   a:hover {
     color: black;
-    background-color: rgb(92, 91, 91);
   }
   
+  button {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    transition: color 1s;
+    }
   
+  button:hover {
+    color: black;
+  }
+
 /* Add a black background color to the top navigation */
 .topnav {
   padding: 20px;
