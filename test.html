@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+    }
+
+    #countdown {
+      font-size: 2em;
+      text-align: center;
+    }
+
+    #fireworks {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="countdown"></div>
+  <canvas id="fireworks"></canvas>
+
+  <script>
+    function startCountdown() {
+      var countdownElement = document.getElementById('countdown');
+      var fireworksCanvas = document.getElementById('fireworks');
+      var countdownDate = new Date('January 1, 2024 00:00:00').getTime();
+
+      var countdownInterval = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = countdownDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdownElement.innerHTML = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's ';
+
+        if (distance < 0) {
+          clearInterval(countdownInterval);
+          countdownElement.style.display = 'none';
+          fireworksCanvas.style.display = 'block';
+          startFireworks();
+        }
+      }, 1000);
+    }
+
+    function startFireworks() {
+      var fireworksCanvas = document.getElementById('fireworks');
+      fireworksCanvas.width = window.innerWidth;
+      fireworksCanvas.height = window.innerHeight;
+
+      // Your fireworks animation logic goes here
+
+      // For a basic example, you can use a library like fireworks.js
+      // Include the library in your project and call the necessary functions here
+      // Example: fireworks(fireworksCanvas);
+    }
+
+    // Start the countdown when the page loads
+    window.onload = function () {
+      startCountdown();
+    };
+  </script>
+</body>
+</html>
