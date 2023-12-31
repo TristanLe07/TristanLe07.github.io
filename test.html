@@ -7,6 +7,7 @@
     body {
       font-family: 'Arial', sans-serif;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
@@ -18,20 +19,27 @@
     #countdown {
       font-size: 2em;
       text-align: center;
+      margin-bottom: 20px;
     }
 
     #fireworks {
       display: none;
     }
+
+    #currentTime {
+      font-size: 1.5em;
+    }
   </style>
 </head>
 <body>
   <div id="countdown"></div>
+  <div id="currentTime"></div>
   <canvas id="fireworks"></canvas>
 
   <script>
     function startCountdown() {
       var countdownElement = document.getElementById('countdown');
+      var currentTimeElement = document.getElementById('currentTime');
       var fireworksCanvas = document.getElementById('fireworks');
       var countdownDate = new Date('January 1, 2024 00:00:00').getTime();
 
@@ -53,6 +61,20 @@
           startFireworks();
         }
       }, 1000);
+
+      // Update current time every second
+      setInterval(function () {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        currentTimeElement.innerHTML = 'Current Time: ' + formatTime(hours) + ':' + formatTime(minutes) + ':' + formatTime(seconds);
+      }, 1000);
+    }
+
+    function formatTime(time) {
+      return time < 10 ? '0' + time : time;
     }
 
     function startFireworks() {
